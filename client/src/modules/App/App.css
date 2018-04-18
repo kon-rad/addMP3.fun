@@ -1,0 +1,26 @@
+html, body {
+  margin: 0;
+  height: 100%;
+}
+body {
+  background-image: -webkit-linear-gradient(45deg, #00ffa1, aqua);
+  background-image: linear-gradient(45deg, #00ffa1, aqua);
+  font-family: 'Roboto', sans-serif;
+}
+.main_title {
+  padding: 100px 0 40px;
+  font-size: 26px;
+  color: grey;
+  font-family: 'Comfortaa', cursive;
+  margin: 0;
+}
+
+.main_container {
+  height: 400px;
+  text-align: center;
+}
+
+/*
+font-family: 'Roboto', sans-serif;
+font-family: 'Comfortaa', cursive;
+ */
