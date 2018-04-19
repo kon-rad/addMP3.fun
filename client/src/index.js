@@ -1,7 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
-import './test.scss';
-import "../node_modules/awesome-possum/scss/app.scss";
+// import './test.scss';
+// import 'awesome-possum/scss/app.scss';
+// import '../node_modules/test.scss';
 
 // import './index.css';
 import { AppContainer } from 'react-hot-loader';
@@ -11,6 +12,8 @@ import registerServiceWorker from './registerServiceWorker';
 const mountApp = document.getElementById('root');
 
 // require("../node_modules/awesome-possum/scss/app.scss");
+// require("../node_modules/test.scss");
+require("./test.scss");
 
 render(
   <AppContainer>

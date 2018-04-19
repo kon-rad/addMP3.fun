@@ -3,8 +3,12 @@ import './App.css';
 import Col from 'awesome-possum/lib/Col'
 import Row from 'awesome-possum/lib/Row'
 import InputBox from './components/InputBox'
+import Button from 'awesome-possum/lib/Button'
 
-require("../../../node_modules/awesome-possum/scss/app.scss");
+
+// require("../../../node_modules/awesome-possum/scss/app.scss");
+// import "../../../node_modules/awesome-possum/scss/app.scss";
+// require("../../../node_modules/test.scss");
 
 
 class App extends Component {
@@ -20,6 +24,7 @@ class App extends Component {
             </Col>
             <Col large={8} largeOffset={2}>
               <InputBox />
+              <Button large>Large</Button>
             </Col>
           </Row>
       </div>
