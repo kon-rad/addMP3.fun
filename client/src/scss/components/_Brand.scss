@@ -1,0 +1,9 @@
+.rev-Brand {
+  font-weight: $global-weight-bold;
+  padding-left: $grid-column-padding;
+  padding-right: $grid-column-padding;
+  height: 100%;
+}
+.ref-Brand-img {
+  height: 97%; // prevents image from overlapping border on TopBar
+}
