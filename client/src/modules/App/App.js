@@ -10,7 +10,7 @@ class App extends Component {
       <div className="main_container">
           <Row>
             <Col large={8} largeOffset={2}>
-              <h1 className="main_title">YouTubeToAudio &#128266;</h1>
+              <h1 className="main_title">YouTubeToAudio</h1>
               <div className="main_subtitle">
                 Convert youtube video to mp3, options to download file and set playback speed.
               </div>

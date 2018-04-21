@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import Col from 'awesome-possum/lib/Col'
 import Row from 'awesome-possum/lib/Row'
-import Input from 'awesome-possum/lib/Input'
+import InputGroup from 'awesome-possum/lib/InputGroup';
+import Input from 'awesome-possum/lib/Input';
+import Button from 'awesome-possum/lib/Button';
+
+// Import Style
+// import styles from './InputBox.scss';
 
 class InputBox extends Component {
   render() {
@@ -9,10 +14,14 @@ class InputBox extends Component {
       <div className="inputBox_container">
         <Row>
           <Col large={8} largeOffset={2}>
-            <Input.Stack
-              placeholder="Youtube URL"
-              button="Covert to Audio"
-            />
+            <InputGroup>
+              <InputGroup.Field>
+                <Input placeholder="Youtube URL" type="text" />
+              </InputGroup.Field>
+              <InputGroup.Button>
+                <Button success type="submit"><span role="img" aria-label="Audio">&#128266;</span></Button>
+              </InputGroup.Button>
+            </InputGroup>
           </Col>
         </Row>
       </div>
