@@ -2,6 +2,14 @@
   "name": "youtube-audio",
   "version": "0.1.0",
   "private": true,
+  "proxy": {
+    "/auth/google": {
+      "target": "http://localhost:5000"
+    },
+    "/api/*": {
+      "target": "http://localhost:5000"
+    }
+  },
   "dependencies": {
     "autoprefixer": "7.1.6",
     "awesome-possum": "^3.5.0",
