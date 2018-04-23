@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 // require('./models/User');
 // require('./models/Survey');
 // require('./services/passport');
+const path = require('path');
 
 // mongoose.Promise = global.Promise;
 // mongoose.connect(keys.mongoURI);
@@ -27,6 +28,12 @@ app.use(bodyParser.json());
 // require('./routes/billingRoutes')(app);
 // require('./routes/surveyRoutes')(app);
 
+app.use(express.static(path.join(__dirname, 'client', 'build')));
+
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+
+});
 
 app.get('/api/hello', (req, res) => {
   res.send({ express: 'Hello From Express' });
