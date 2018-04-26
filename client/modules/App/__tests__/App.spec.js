@@ -3,7 +3,7 @@ import test from 'ava';
 import sinon from 'sinon';
 import { shallow, mount } from 'enzyme';
 import { App } from '../App';
-import styles from '../App.scss';
+import styles from '../App.css';
 import { intlShape } from 'react-intl';
 import { intl } from '../../../util/react-intl-test-helper';
 import { toggleAddPost } from '../AppActions';

@@ -16,8 +16,7 @@
     "slate": "rimraf node_modules && npm install",
     "lint": "eslint client server"
   },
-  "pre-commit": [
-  ],
+  "pre-commit": [],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Hashnode/mern-starter.git"
@@ -51,7 +50,9 @@
     "redux": "^3.5.2",
     "redux-thunk": "^2.1.0",
     "sanitize-html": "^1.11.4",
-    "sass-loader": "^7.0.1"
+    "sassy-npm-importer": "^3.0.0",
+    "sass-loader": "^7.0.1",
+    "youtube-dl": "^1.12.2"
   },
   "devDependencies": {
     "ava": "^0.15.2",

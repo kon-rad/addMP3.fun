@@ -7,6 +7,9 @@ import { AppContainer } from 'react-hot-loader';
 import App from './App';
 import { configureStore } from './store';
 
+// import styles
+import './App.scss';
+
 require("../node_modules/awesome-possum/scss/app.scss");
 
 // Initialize store

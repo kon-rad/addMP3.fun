@@ -42,6 +42,26 @@ app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
 app.use(Express.static(path.resolve(__dirname, '../dist/client')));
 
+// const fs = require('fs');
+// const youtubedl = require('youtube-dl');
+// const video = youtubedl('https://www.youtube.com/watch?v=gsWAdMJtWZs',
+//   // Optional arguments passed to youtube-dl.
+//   ['--format=18'],
+//   // Additional options can be given for calling `child_process.execFile()`.
+//   { cwd: __dirname });
+//
+// // Will be called when the download starts.
+// video.on('info', function(info) {
+//   console.log('Download started');
+//   console.log('filename: ' + info.filename);
+//   console.log('size: ' + info.size);
+// });
+//
+//
+// video.pipe(fs.createWriteStream('myvideo.mp4'));
+
+
+
 // Render Initial HTML
 const renderFullPage = (html, initialState) => {
   const head = Helmet.rewind();
@@ -62,7 +82,6 @@ const renderFullPage = (html, initialState) => {
 
         ${isProdMode ? `<link rel='stylesheet' href='${assetsManifest['/app.css']}' />` : ''}
         <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'/>
-        <link rel="shortcut icon" href="http://res.cloudinary.com/hashnode/image/upload/v1455629445/static_imgs/mern/mern-favicon-circle-fill.png" type="image/png" />
         <link href="https://fonts.googleapis.com/css?family=Comfortaa|Roboto" rel="stylesheet">
       </head>
       <body>

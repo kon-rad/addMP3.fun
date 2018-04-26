@@ -5,8 +5,7 @@ import Row from 'awesome-possum/lib/Row'
 import InputBox from './components/InputBox'
 
 // Import Style
-// import './App.css';
-require('./App.scss');
+import styles from './App.css';
 
 // Import Components
 import Helmet from 'react-helmet';
@@ -53,8 +52,8 @@ export class App extends Component {
             <div className="main_container">
               <Row>
                 <Col large={8} largeOffset={2}>
-                  <h1 className="main_title">YouTubeToAudio</h1>
-                  <div className="main_subtitle">
+                  <h1 className={styles.main_title}>YouTubeToAudio</h1>
+                  <div className={styles.main_subtitle}>
                     Convert youtube video to mp3, options to download file and set playback speed.
                   </div>
                   <h3>{this.state.response}</h3>
