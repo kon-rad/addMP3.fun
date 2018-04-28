@@ -16,6 +16,7 @@ export default function callApi(endpoint, method = 'get', body) {
     if (!response.ok) {
       return Promise.reject(json);
     }
+    console.log('hi this is apiCaller, response: ', response);
 
     return json;
   })

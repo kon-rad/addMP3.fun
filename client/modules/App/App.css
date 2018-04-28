@@ -22,6 +22,8 @@ body {
   color: #0c0b0b;
   font-family: 'Comfortaa', cursive;
   margin: 0;
+
+  text-align: center;
 }
 
 .main_container {

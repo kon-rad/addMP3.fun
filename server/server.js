@@ -34,6 +34,7 @@ import Helmet from 'react-helmet';
 // Import required modules
 import routes from '../client/routes';
 import { fetchComponentData } from './util/fetchData';
+import getAudio from './routes/get.routes';
 import serverConfig from './config';
 
 // Apply body Parser and server public assets and routes
@@ -60,6 +61,9 @@ app.use(Express.static(path.resolve(__dirname, '../dist/client')));
 //
 // video.pipe(fs.createWriteStream('myvideo.mp4'));
 
+
+
+app.use('/api/', getAudio);
 
 
 // Render Initial HTML

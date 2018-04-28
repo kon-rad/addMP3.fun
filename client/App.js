@@ -8,8 +8,8 @@ import { Router, browserHistory } from 'react-router';
 // Import Routes
 import routes from './routes';
 
-// Base stylesheet
-require('./main.css');
+// main style sheet
+import './main.scss';
 
 export default function App(props) {
   return (

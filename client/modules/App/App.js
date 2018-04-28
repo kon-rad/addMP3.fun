@@ -14,6 +14,9 @@ import DevTools from './components/DevTools';
 // Import Actions
 import { toggleAddPost } from './AppActions';
 
+// Import Api caller
+import callApi from '../../util/apiCaller';
+
 export class App extends Component {
   constructor(props) {
     super(props);
@@ -26,6 +29,18 @@ export class App extends Component {
 
   toggleAddPostSection = () => {
     this.props.dispatch(toggleAddPost());
+  };
+
+  handleSendUrl = (searchQuery) => {
+    console.log(searchQuery);
+
+    return callApi('getAudio', 'get', {
+      sendUrl: {
+        url: 'hello world'
+      }
+    }).then(res => console.log('res: ', res));
+
+
   };
 
   render() {
@@ -59,7 +74,9 @@ export class App extends Component {
                   <h3>{this.state.response}</h3>
                 </Col>
                 <Col large={8} largeOffset={2}>
-                  <InputBox />
+                  <InputBox
+                    sendUrl={this.handleSendUrl}
+                  />
                 </Col>
               </Row>
             </div>
