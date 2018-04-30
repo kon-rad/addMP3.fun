@@ -34,12 +34,11 @@ export class App extends Component {
   handleSendUrl = (searchQuery) => {
     console.log(searchQuery);
 
-    return callApi('getAudio', 'get', {
-      sendUrl: {
-        url: 'hello world'
-      }
+    return callApi('postAudio', 'post', {
+      post: {
+        url: 'test url' + searchQuery,
+      },
     }).then(res => console.log('res: ', res));
-
 
   };
 

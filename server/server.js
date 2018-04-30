@@ -34,7 +34,7 @@ import Helmet from 'react-helmet';
 // Import required modules
 import routes from '../client/routes';
 import { fetchComponentData } from './util/fetchData';
-import getAudio from './routes/get.routes';
+import audioRoutes from './routes/routes';
 import serverConfig from './config';
 
 // Apply body Parser and server public assets and routes
@@ -63,7 +63,7 @@ app.use(Express.static(path.resolve(__dirname, '../dist/client')));
 
 
 
-app.use('/api/', getAudio);
+app.use('/api', audioRoutes);
 
 
 // Render Initial HTML
