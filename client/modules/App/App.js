@@ -36,7 +36,7 @@ export class App extends Component {
 
     return callApi('postAudio', 'post', {
       post: {
-        url: 'test url' + searchQuery,
+        url: searchQuery,
       },
     }).then(res => console.log('res: ', res));
 

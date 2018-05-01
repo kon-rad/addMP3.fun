@@ -43,26 +43,6 @@ app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
 app.use(Express.static(path.resolve(__dirname, '../dist/client')));
 
-// const fs = require('fs');
-// const youtubedl = require('youtube-dl');
-// const video = youtubedl('https://www.youtube.com/watch?v=gsWAdMJtWZs',
-//   // Optional arguments passed to youtube-dl.
-//   ['--format=18'],
-//   // Additional options can be given for calling `child_process.execFile()`.
-//   { cwd: __dirname });
-//
-// // Will be called when the download starts.
-// video.on('info', function(info) {
-//   console.log('Download started');
-//   console.log('filename: ' + info.filename);
-//   console.log('size: ' + info.size);
-// });
-//
-//
-// video.pipe(fs.createWriteStream('myvideo.mp4'));
-
-
-
 app.use('/api', audioRoutes);
 
 
