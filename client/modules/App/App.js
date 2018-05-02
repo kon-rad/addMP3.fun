@@ -38,7 +38,26 @@ export class App extends Component {
       post: {
         url: searchQuery,
       },
-    }).then(res => console.log('res: ', res));
+    }).then((res) => {
+
+      let downloadFileFromBlob = (function () {
+        let a = document.createElement("a");
+        document.body.appendChild(a);
+        a.style = "display: none";
+        return function (data, fileName) {
+          let blob = new Blob([data], {
+              type: "octet/stream"
+            }),
+            url = window.URL.createObjectURL(blob);
+          a.href = url;
+          a.download = fileName;
+          a.click();
+          window.URL.revokeObjectURL(url);
+        };
+      }());
+
+      downloadFileFromBlob(res.body, 'newAudio.mp3');
+    });
 
   };
 
