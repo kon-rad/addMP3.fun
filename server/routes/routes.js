@@ -3,5 +3,5 @@ import * as Controller from '../controllers/controller';
 const router = new Router();
 
 // Post audio
-router.route('/postAudio').post(Controller.postAudio);
+router.route('/postAudio').get(Controller.postAudio);
 export default router;

@@ -39,24 +39,25 @@ export class App extends Component {
         url: searchQuery,
       },
     }).then((res) => {
+      console.log(res);
 
-      let downloadFileFromBlob = (function () {
-        let a = document.createElement("a");
-        document.body.appendChild(a);
-        a.style = "display: none";
-        return function (data, fileName) {
-          let blob = new Blob([data], {
-              type: "octet/stream"
-            }),
-            url = window.URL.createObjectURL(blob);
-          a.href = url;
-          a.download = fileName;
-          a.click();
-          window.URL.revokeObjectURL(url);
-        };
-      }());
-
-      downloadFileFromBlob(res.body, 'newAudio.mp3');
+      // let downloadFileFromBlob = (function () {
+      //   let a = document.createElement("a");
+      //   document.body.appendChild(a);
+      //   a.style = "display: none";
+      //   return function (data, fileName) {
+      //     let blob = new Blob([data], {
+      //         type: "octet/stream"
+      //       }),
+      //       url = window.URL.createObjectURL(blob);
+      //     a.href = url;
+      //     a.download = fileName;
+      //     a.click();
+      //     window.URL.revokeObjectURL(url);
+      //   };
+      // }());
+      //
+      // downloadFileFromBlob(res.body, 'newAudio.mp3');
     });
 
   };
@@ -90,6 +91,9 @@ export class App extends Component {
                     Convert youtube video to mp3, options to download file and set playback speed.
                   </div>
                   <h3>{this.state.response}</h3>
+
+                  <a href="http://localhost:8000/api/postAudio?url=Lo3769VtgHM" target="_blank"> <button class="btn btn-success"> Download </button>	</a>
+
                 </Col>
                 <Col large={8} largeOffset={2}>
                   <InputBox

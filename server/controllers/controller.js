@@ -1,6 +1,7 @@
 const fs = require('fs');
-const youtubedl = require('youtube-dl');
-var	ffmpeg = require('fluent-ffmpeg');
+let	ffmpeg = require('fluent-ffmpeg');
+let youtubedl = require('youtube-dl');
+
 
 /**
  * Post audio
@@ -11,45 +12,29 @@ var	ffmpeg = require('fluent-ffmpeg');
  * test url:
  * https://www.youtube.com/watch?v=Lo3769VtgHM
  */
-export function postAudio(req, res) {
+export async function postAudio(req, res) {
 
-  const url = req.body.post.url;
+  const url = "https://www.youtube.com/watch?v=" + req.query.url.trim();
+  // let file = 'youtubeAudio.mp3';
 
-  const video = youtubedl(url,
-    ['-x', '--audio-format', 'mp3'],
-    { cwd: __dirname });
+  let filename = url.split('watch?v=')[1] + '.mp3';
+  // filename = filename.replace(/[ <>:"/\\|?*]/g, '_') + '.mp3';
+  console.log(`/tmp/${filename}`);
 
-  video.on('info', function(info) {
-    console.log('Download started');
-    console.log('filename: ' + info._filename);
-    console.log('size: ' + info.size);
+  youtubedl.exec(url,
+    ['-x', '--audio-format', 'mp3', '-o', '/tmp/%(id)s.%(ext)s', '--prefer-ffmpeg'],
+    {},
+    function exec(err, output) {
+      'use strict';
+      if (err) { throw err; }
+      console.log(output.join('\n'));
+
+      res.download(`/tmp/${filename}`);
   });
 
-  video.pipe(fs.createWriteStream('test.mp3'));
-  video.on('end', function() {
-    res.writeHead(200, {
-      'Content-Type': 'audio/mpeg'
-    });
-    video.pipe(res);
-  });
-
-
-
-  // video.on('end', function() {
-  //   res.writeHead(200, {
-  //     'Content-Type': 'audio/mpeg'
-  //   });
-  // })
-
-
-  // video.pipe(fs.createWriteStream('myvideo.mp3'));
-
-  // var proc = new ffmpeg({source:video});
-  // proc.setFfmpegPath('/Applications/ffmpeg/ffmpeg');
-  // proc.save(mp3 + '.mp3');
-
-  // res.header({
-  //   'Content-Disposition': 'attachment; filename="youtubeAudio.mp3"'
-  // });
-
+  // res.setHeader('Content-disposition', 'attachment; filename=' + fileId);
+  // res.setHeader('Content-Type', 'application/audio/mpeg3')
+  // var rstream = fs.createReadStream(file);
+  // rstream.pipe(res);
 }
+

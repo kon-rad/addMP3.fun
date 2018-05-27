@@ -11,7 +11,7 @@ import styles from './InputBox.scss';
 class InputBox extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: '' };
+    this.state = { value: 'https://www.youtube.com/watch?v=Lo3769VtgHM' };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
