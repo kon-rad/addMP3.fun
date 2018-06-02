@@ -22,8 +22,6 @@ test('renders properly', t => {
     <App {...props} />
   );
 
-  // t.is(wrapper.find('Helmet').length, 1);
-  t.is(wrapper.find('Header').length, 1);
   t.is(wrapper.find('Footer').length, 1);
   t.is(wrapper.find('Header').prop('toggleAddPost'), wrapper.instance().toggleAddPostSection);
   t.truthy(wrapper.find('Header + div').hasClass(styles.container));

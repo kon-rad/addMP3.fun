@@ -23,7 +23,7 @@ export function postAudio(req, res) {
     function exec(err, output) {
       'use strict';
       if (err) {
-        res.send('error please try again');
+        res.send('error, please try again');
         throw err;
       }
       console.log(output.join('\n'));
@@ -51,10 +51,8 @@ export function download(req, res) {
         fs.unlink(file);
       });
     } else {
-      res.send('error please try again');
+      res.send('error, please try again');
       res.end();
     }
   })
 }
-
-
