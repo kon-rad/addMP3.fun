@@ -13,7 +13,6 @@ export default function callApi(endpoint, method = 'get', body) {
     body: JSON.stringify(body),
   })
   .then(response => {
-    console.log('response = ', response);
-    return response;
+    return response.json();
   });
 }

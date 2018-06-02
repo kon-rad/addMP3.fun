@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Col from 'awesome-possum/lib/Col'
 import Row from 'awesome-possum/lib/Row'
 import InputBox from './components/InputBox'
+import DownloadLink from './components/DownloadLink'
 
 // Import Style
 import styles from './App.css';
@@ -20,7 +21,10 @@ import callApi from '../../util/apiCaller';
 export class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { isMounted: false };
+    this.state = {
+      isMounted: false,
+      downloadLink: ''
+    };
   }
 
   componentDidMount() {
@@ -39,7 +43,8 @@ export class App extends Component {
         url: searchQuery,
       },
     }).then((res) => {
-      console.log(res);
+      this.setState({downloadLink: res.downloadLink});
+      console.log('res.body', res, 'this.state.downloadLink', this.state.downloadLink );
 
       // let downloadFileFromBlob = (function () {
       //   let a = document.createElement("a");
@@ -91,14 +96,10 @@ export class App extends Component {
                     Convert youtube video to mp3, options to download file and set playback speed.
                   </div>
                   <h3>{this.state.response}</h3>
-
-                  <a href="http://localhost:8000/api/postAudio?url=Lo3769VtgHM" target="_blank"> <button class="btn btn-success"> Download </button>	</a>
-
                 </Col>
                 <Col large={8} largeOffset={2}>
-                  <InputBox
-                    sendUrl={this.handleSendUrl}
-                  />
+                  <InputBox sendUrl={this.handleSendUrl} />
+                  <DownloadLink downloadLink={this.state.downloadLink} />
                 </Col>
               </Row>
             </div>
