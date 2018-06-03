@@ -8,4 +8,7 @@ router.route('/postAudio').post(Controller.postAudio);
 // download audio
 router.route('/download/:id').get(Controller.download);
 
+// changeRate audio
+router.route('/changeRate/:fileId/:playbackRate').get(Controller.changeRate);
+
 export default router;

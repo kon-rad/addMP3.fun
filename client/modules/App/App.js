@@ -2,15 +2,15 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Col from 'awesome-possum/lib/Col'
 import Row from 'awesome-possum/lib/Row'
-import InputBox from './components/InputBox'
-import DownloadLink from './components/DownloadLink'
+import InputBox from './components/InputBox/InputBox'
+import DownloadLink from './components/DownloadLink/DownloadLink'
 
 // Import Style
 import styles from './App.css';
 
 // Import Components
 import Helmet from 'react-helmet';
-import DevTools from './components/DevTools';
+import DevTools from './components/DevTools/DevTools';
 
 // Import Actions
 import { toggleAddPost } from './AppActions';
@@ -23,7 +23,8 @@ export class App extends Component {
     super(props);
     this.state = {
       isMounted: false,
-      downloadLink: ''
+      downloadLink: 'X1U4WzqH3YM.mp3',
+      playbackSpeed: '1',
     };
   }
 
@@ -36,36 +37,36 @@ export class App extends Component {
   };
 
   handleSendUrl = (searchQuery) => {
-    console.log(searchQuery);
+    this.setState({ downloadLink: 'loading' });
 
     return callApi('postAudio', 'post', {
       post: {
         url: searchQuery,
       },
     }).then((res) => {
-      this.setState({downloadLink: res.downloadLink});
+      this.setState({ downloadLink: res.downloadLink });
       console.log('res.body', res, 'this.state.downloadLink', this.state.downloadLink );
-
-      // let downloadFileFromBlob = (function () {
-      //   let a = document.createElement("a");
-      //   document.body.appendChild(a);
-      //   a.style = "display: none";
-      //   return function (data, fileName) {
-      //     let blob = new Blob([data], {
-      //         type: "octet/stream"
-      //       }),
-      //       url = window.URL.createObjectURL(blob);
-      //     a.href = url;
-      //     a.download = fileName;
-      //     a.click();
-      //     window.URL.revokeObjectURL(url);
-      //   };
-      // }());
-      //
-      // downloadFileFromBlob(res.body, 'newAudio.mp3');
     });
 
   };
+
+  handleReset = () => {
+    console.log('handle reset');
+    this.setState({ downloadLink: '' });
+  };
+
+  handleRateChange = (e) => {
+    console.log(e.target.value);
+    this.setState({ playbackSpeed: e.target.value });
+
+    let audioFileId = this.state.downloadLink;
+    let playbackSpeed = e.target.value;
+    return callApi(`changeRate/${audioFileId}/${playbackSpeed}`, 'get'
+    ).then((res) => {
+      this.setState({ downloadLink: res.downloadLink });
+      console.log('res.body', res.body, 'this is rate');
+    });
+  }
 
   render() {
     return (
@@ -99,7 +100,7 @@ export class App extends Component {
                 </Col>
                 <Col large={8} largeOffset={2}>
                   <InputBox sendUrl={this.handleSendUrl} />
-                  <DownloadLink downloadLink={this.state.downloadLink} />
+                  <DownloadLink playbackSpeed={this.state.playbackSpeed} handleRateChange={this.handleRateChange} handleReset={this.handleReset} downloadLink={this.state.downloadLink} />
                 </Col>
               </Row>
             </div>

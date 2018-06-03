@@ -5,9 +5,6 @@ import InputGroup from 'awesome-possum/lib/InputGroup';
 import Input from 'awesome-possum/lib/Input';
 import Button from 'awesome-possum/lib/Button';
 
-// Import Style
-import styles from './InputBox.scss';
-
 class InputBox extends Component {
   constructor(props) {
     super(props);
@@ -33,7 +30,7 @@ class InputBox extends Component {
       <div className="inputBox_container">
         <Row>
           <Col large={8} largeOffset={2}>
-            <form className={styles.input_form} onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit}>
               <InputGroup>
                 <InputGroup.Field>
                   <Input placeholder="Youtube URL" type="text" value={this.state.value} onChange={this.handleChange} />
