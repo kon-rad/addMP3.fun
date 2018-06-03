@@ -56,15 +56,13 @@ export class App extends Component {
   };
 
   handleRateChange = (e) => {
-    console.log(e.target.value);
-    this.setState({ playbackSpeed: e.target.value });
-
     let audioFileId = this.state.downloadLink;
     let playbackSpeed = e.target.value;
+    this.setState({ playbackSpeed: e.target.value, downloadLink: 'loading' });
+
     return callApi(`changeRate/${audioFileId}/${playbackSpeed}`, 'get'
     ).then((res) => {
       this.setState({ downloadLink: res.downloadLink });
-      console.log('res.body', res.body, 'this is rate');
     });
   }
 
@@ -100,7 +98,10 @@ export class App extends Component {
                 </Col>
                 <Col large={8} largeOffset={2}>
                   <InputBox sendUrl={this.handleSendUrl} />
-                  <DownloadLink playbackSpeed={this.state.playbackSpeed} handleRateChange={this.handleRateChange} handleReset={this.handleReset} downloadLink={this.state.downloadLink} />
+                  <DownloadLink playbackSpeed={this.state.playbackSpeed}
+                                handleRateChange={this.handleRateChange}
+                                handleReset={this.handleReset}
+                                downloadLink={this.state.downloadLink} />
                 </Col>
               </Row>
             </div>

@@ -1,8 +1,8 @@
 const fs = require('fs');
-let	ffmpeg = require('fluent-ffmpeg');
+// let	ffmpeg = require('fluent-ffmpeg');
 let youtubedl = require('youtube-dl');
 let path = require('path');
-import {Howl, Howler} from 'howler';
+const { spawn } = require('child_process');
 
 /**
  * Post audio
@@ -67,26 +67,38 @@ export function download(req, res) {
 export function changeRate(req, res) {
   const fileId = req.params.fileId.trim();
   const file = path.join(__dirname, '..', 'tmp', fileId);
-  const playbackRate = req.params.playbackRate.trim();
+  const speed = parseFloat(req.params.playbackRate.trim());
+  const playbackRate = "atempo=" + speed;
+  const outputFileName = speed + 'x_' + fileId;
+  const outputFile = path.join(__dirname, '..', 'tmp', outputFileName);
 
+  let ffmpeg = spawn('ffmpeg', ['-i', file, '-filter:a', playbackRate, '-vn', outputFile ]);
 
-  // Setup the new Howl.
-  const sound = new Howl({
-    src: [file]
+  ffmpeg.stderr.on('data', function (data) {
+    console.log(data.toString());
   });
 
-  // Play the sound.
-  sound.rate(playbackRate);
-  const newFile = path.join(__dirname, '..', 'tmp', playbackRate + '_speed' + fileId);
-
-  fs.rename(file, newFile, function(err) {
-    if ( err ) console.log('ERROR: ' + err);
-    else
-      console.log('success: changed filename');
+  ffmpeg.stderr.on('end', function () {
+    console.log('file has been converted succesfully', outputFile);
   });
 
-  console.log(playbackRate, fileId);
+  ffmpeg.stderr.on('exit', function () {
+    console.log('child process exited');
+  });
 
-  res.send({ downloadLink: newFile });
+  ffmpeg.stderr.on('close', function() {
+    console.log('...closing time! bye');
+    res.send({ downloadLink: outputFileName });
+
+    fs.exists(file, (exists) => {
+      if (exists) {
+        fs.unlink(file);
+      } else {
+        console.log('error, could not delete ' + file);
+        res.end();
+      }
+    })
+  });
+
 
 }

@@ -36,21 +36,20 @@ class DownloadLink extends Component {
               <FaClose />
               Reset
             </Button>
-            <Button target="_blank" href={hrefUrl}>
+            <Button target="_blank" href={hrefUrl} onClick={() => this.props.handleReset()}>
               <FaDownload />
-              Download
+              Download <span className={ styles.downloadSpeed }>{this.props.playbackSpeed}x speed</span>
             </Button>
             <div className={ styles.changesSpeedWrapper }>
               <Select name="playbackRate" defaultValue={this.props.playbackSpeed} onChange={(e) => this.props.handleRateChange(e)}>
+                <option value="0.5">0.5x</option>
                 <option value="1">1.0x</option>
+                <option value="1.5">1.5x</option>
                 <option value="2">2.0x</option>
-                <option value="3">3.0x</option>
-                <option value="4">4.0x</option>
               </Select>
-              <span>
+              <span className={ styles.speedButton }>
                 Select Speed
               </span>
-
             </div>
           </Row>
         </div>

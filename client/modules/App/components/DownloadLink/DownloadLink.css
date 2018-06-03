@@ -3,3 +3,11 @@
 .changesSpeedWrapper {
   display:flex;
 }
+.speedButton {
+  text-align: center;
+  font-size: 14px;
+  padding-top: 6px;
+}
+.downloadSpeed {
+  font-size: 13px;
+}
