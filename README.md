@@ -1,6 +1,12 @@
-# youtubeToAudio
-Convert youtube video to mp3, options to download file and set playback speed.
-## tech stack
+# addMP3.fun
+Conviniently download audio from youtube and optionally select preferred playback rate.
+## built with
+- heart
+- head
+- hands
+- MERN.io starter boilerplate
+- webstorm
 - NodeJS
 - Express
 - React
+- Harmonium UI Library

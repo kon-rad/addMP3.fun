@@ -1,7 +1,7 @@
 {
-  "name": "mern-starter",
-  "version": "2.0.0",
-  "description": "Boilerplate project for building Isomorphic apps using React and Redux",
+  "name": "addMP3",
+  "version": "1.0.0",
+  "description": "Conviniently download audio from youtube and optionally select preferred playback rate",
   "scripts": {
     "test": "cross-env NODE_ENV=test PORT=8080 MONGO_URL=mongodb://localhost:27017/mern-test node_modules/.bin/nyc node --harmony-proxies node_modules/.bin/ava",
     "watch:test": "npm run test -- --watch",
@@ -19,13 +19,13 @@
   "pre-commit": [],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Hashnode/mern-starter.git"
+    "url": "git+https://github.com/kon-rad/addmp3.fun.git"
   },
   "bugs": {
-    "url": "https://github.com/Hashnode/mern-starter/issues"
+    "url": "https://github.comkon-rad/addmp3.fun.git/issues"
   },
-  "homepage": "https://github.com/Hashnode/mern-starter#readme",
-  "author": "Prashant Abhishek <prashant.abhishek7g@gmail.com>, Mayank Chandola <imayankchd@gmail.com>, Sandeep Panda <sandeep@hashnode.com>, Syed Fazle Rahman <fazle@hashnode.com>, Alkshendra Maurya <alkshendra@hashnode.com>",
+  "homepage": "https://addmp3.fun",
+  "author": "Konrad Gnat <konradmgnat@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "awesome-possum": "^3.5.2",
