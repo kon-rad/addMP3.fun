@@ -10,7 +10,6 @@ import styles from './App.css';
 
 // Import Components
 import Helmet from 'react-helmet';
-import DevTools from './components/DevTools/DevTools';
 
 // Import Actions
 import { toggleAddPost } from './AppActions';
@@ -69,11 +68,10 @@ export class App extends Component {
   render() {
     return (
       <div>
-        {this.state.isMounted && !window.devToolsExtension && process.env.NODE_ENV === 'development' && <DevTools />}
         <div>
           <Helmet
-            title="youtubeAudio App"
-            titleTemplate="youtubeAudio App"
+            title="addMP3.fun download mp3 audio from youtube"
+            titleTemplate="addMP3.fun download mp3 audio from youtube"
             meta={[
               { charset: 'utf-8' },
               {
@@ -90,7 +88,7 @@ export class App extends Component {
             <div className="main_container">
               <Row>
                 <Col large={8} largeOffset={2}>
-                  <h1 className={styles.main_title}>YouTubeToAudio</h1>
+                  <h1 className={styles.main_title}>AddMP3.fun</h1>
                   <div className={styles.main_subtitle}>
                     Convert youtube video to mp3, options to download file and set playback speed.
                   </div>

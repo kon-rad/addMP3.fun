@@ -8,9 +8,6 @@ import { Router, browserHistory } from 'react-router';
 // Import Routes
 import routes from './routes';
 
-// main style sheet
-import './main.scss';
-
 export default function App(props) {
   return (
     <Provider store={props.store}>
