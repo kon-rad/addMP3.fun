@@ -10,7 +10,6 @@ RUN npm install
 RUN npm rebuild node-sass --force
 COPY .babelrc index.js nodemon.json webpack.config.babel.js webpack.config.dev.js webpack.config.prod.js webpack.config.server.js ./
 COPY client ./client
-COPY Intl ./Intl
 COPY server ./server
 CMD ["npm", "start"]
 
@@ -23,6 +22,12 @@ ENV NODE_ENV=production
 COPY package.json package-lock.json ./
 RUN npm install --production
 RUN npm rebuild node-sass --force
+RUN npm link webpack
 COPY index.js ./
 COPY --from=build /usr/src/app/dist ./dist
 CMD ["npm", "run", "start:prod"]
+
+
+#build project for production
+#docker-compose -f docker-compose-production.yml build
+
