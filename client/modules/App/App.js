@@ -22,7 +22,7 @@ export class App extends Component {
     super(props);
     this.state = {
       isMounted: false,
-      downloadLink: 'X1U4WzqH3YM.mp3',
+      downloadLink: '',
       playbackSpeed: '1',
     };
   }
@@ -68,7 +68,7 @@ export class App extends Component {
   render() {
     return (
       <div>
-        <div>
+        <div className={ styles.appWrapper }>
           <Helmet
             title="addMP3.fun download mp3 audio from youtube"
             titleTemplate="addMP3.fun download mp3 audio from youtube"
@@ -86,11 +86,11 @@ export class App extends Component {
           />
           <div>
             <div className="main_container">
-              <Row>
+              <Row className={styles.customRow}>
                 <Col large={8} largeOffset={2}>
                   <h1 className={styles.main_title}>AddMP3.fun</h1>
                   <div className={styles.main_subtitle}>
-                    Convert youtube video to mp3, options to download file and set playback speed.
+                    Convert youtube video to mp3, download file and set playback speed to enjoy at any time.
                   </div>
                   <h3>{this.state.response}</h3>
                 </Col>
@@ -105,6 +105,7 @@ export class App extends Component {
             </div>
           </div>
         </div>
+        <div className={ styles.creditsFooter }><span>Thanks to: mern.io, reverlry, uiGradients</span></div>
       </div>
     );
   }

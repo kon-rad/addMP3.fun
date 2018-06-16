@@ -8,7 +8,7 @@ import Button from 'awesome-possum/lib/Button';
 class InputBox extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: 'https://www.youtube.com/watch?v=Lo3769VtgHM' };
+    this.state = { value: '' };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -20,6 +20,9 @@ class InputBox extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     if (this.state.value.trim()) {
+      if (!this.state.value.match(/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/)) {
+        return;
+      }
       this.props.sendUrl(this.state.value);
       this.setState({ value: '' });
     }

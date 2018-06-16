@@ -58,6 +58,15 @@ const renderFullPage = (html, initialState) => {
     <!doctype html>
     <html>
       <head>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-88237019-6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'UA-88237019-6');
+        </script>
         ${head.base.toString()}
         ${head.title.toString()}
         ${head.meta.toString()}

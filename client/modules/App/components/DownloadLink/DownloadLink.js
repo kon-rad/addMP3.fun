@@ -18,13 +18,13 @@ class DownloadLink extends Component {
   render() {
     let hrefUrl = `/api/download/${this.props.downloadLink}`;
     let loading = (
-      <div>
-        <Row flex spaced style={{alignItems: "center"}}>
+      <div className={ styles.spinnerOuter } >
+        <Row flex spaced className={ styles.spinnerWrapper }>
           <Loader medium duration="900ms" />
         </Row>
-        <Row flex spaced style={{alignItems: "center"}}>
+        <div>
           <span>Converting file ...</span>
-        </Row>
+        </div>
       </div>
     );
     let link = '';

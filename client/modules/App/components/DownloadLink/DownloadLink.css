@@ -11,3 +11,17 @@
 .downloadSpeed {
   font-size: 13px;
 }
+
+.spinnerWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinnerOuter {
+  text-align: center;
+}
+
+.spinnerTextWrapper {
+  text-align: center;
+}
