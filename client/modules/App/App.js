@@ -90,7 +90,7 @@ export class App extends Component {
                 <Col large={8} largeOffset={2}>
                   <h1 className={styles.main_title}>AddMP3.fun</h1>
                   <div className={styles.main_subtitle}>
-                    Convert youtube video to mp3, download file and set playback speed to enjoy at any time.
+                    Convert any youtube video to an MP3 file. Choose playback speed and download it in seconds.
                   </div>
                   <h3>{this.state.response}</h3>
                 </Col>
@@ -105,7 +105,7 @@ export class App extends Component {
             </div>
           </div>
         </div>
-        <div className={ styles.creditsFooter }><span>Thanks to: mern.io, reverlry, uiGradients</span></div>
+        <div className={ styles.creditsFooter }><span>Thanks to: mern.io, reverlry</span></div>
       </div>
     );
   }

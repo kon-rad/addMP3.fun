@@ -5,6 +5,8 @@ import InputGroup from 'awesome-possum/lib/InputGroup';
 import Input from 'awesome-possum/lib/Input';
 import Button from 'awesome-possum/lib/Button';
 
+import styles from './InputBox.css';
+
 class InputBox extends Component {
   constructor(props) {
     super(props);
@@ -39,7 +41,7 @@ class InputBox extends Component {
                   <Input placeholder="Youtube URL" type="text" value={this.state.value} onChange={this.handleChange} />
                 </InputGroup.Field>
                 <InputGroup.Button>
-                  <Button success type="submit"><span role="img" aria-label="Audio">&#128266;</span></Button>
+                  <Button className={styles.submitButton} type="submit">addMP3</Button>
                 </InputGroup.Button>
               </InputGroup>
             </form>
