@@ -62,7 +62,7 @@ input:-moz-placeholder {
   margin: 0 auto!important;
 }
 
-body {
+html, body {
   background-image: -webkit-linear-gradient(45deg, #00ffa1, aqua) !important;
   background-image: linear-gradient(45deg, #00ffa1, aqua) !important;
   font-family: 'Roboto', sans-serif !important;
