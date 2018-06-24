@@ -31,7 +31,7 @@ class DownloadLink extends Component {
     if (this.props.downloadLink) {
       link = this.props.downloadLink === 'loading' ? loading : (
         <div>
-          <Row flex spaced style={{alignItems: "center"}}>
+          <Row className={styles.buttonsWrapper} flex spaced style={{alignItems: "center"}}>
             <Button alert onClick={() => this.props.handleReset()}>
               <FaClose />
               Reset
@@ -43,8 +43,11 @@ class DownloadLink extends Component {
             <div className={ styles.changesSpeedWrapper }>
               <Select name="playbackRate" defaultValue={this.props.playbackSpeed} onChange={(e) => this.props.handleRateChange(e)}>
                 <option value="0.5">0.5x</option>
+                <option value="0.75">0.75x</option>
                 <option value="1">1.0x</option>
+                <option value="1.25">1.25x</option>
                 <option value="1.5">1.5x</option>
+                <option value="1.75">1.75x</option>
                 <option value="2">2.0x</option>
               </Select>
               <span className={ styles.speedButton }>

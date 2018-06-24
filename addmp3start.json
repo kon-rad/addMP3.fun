@@ -1,9 +1,0 @@
-{
-  "apps": [
-    {
-      "name": "addmp3",
-      "script": "npm",
-      "args": "bs"
-    }
-  ]
-}

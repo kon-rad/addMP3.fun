@@ -25,3 +25,10 @@
 .spinnerTextWrapper {
   text-align: center;
 }
+
+@media only screen and (max-width: 900px) {
+  .buttonsWrapper {
+    display: flex!important;
+    flex-direction: column!important;
+  }
+}
