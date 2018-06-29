@@ -49,7 +49,7 @@ export class App extends Component {
   };
 
   handleReset = () => {
-    this.setState({ downloadLink: '' });
+    this.setState({ downloadLink: '', playbackSpeed: '1' });
   };
 
   handleRateChange = (e) => {
