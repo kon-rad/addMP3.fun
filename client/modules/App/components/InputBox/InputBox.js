@@ -22,10 +22,11 @@ class InputBox extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     if (this.state.value.trim()) {
-      if (!this.state.value.match(/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/)) {
+      let ytid = this.state.value.match(/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/);
+      if (!ytid[5]) {
         return;
       }
-      this.props.sendUrl(this.state.value);
+      this.props.sendUrl(ytid[5]);
       this.setState({ value: '' });
     }
   }

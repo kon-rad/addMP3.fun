@@ -44,13 +44,11 @@ export class App extends Component {
       },
     }).then((res) => {
       this.setState({ downloadLink: res.downloadLink });
-      console.log('res.body', res, 'this.state.downloadLink', this.state.downloadLink );
     });
 
   };
 
   handleReset = () => {
-    console.log('handle reset');
     this.setState({ downloadLink: '' });
   };
 
@@ -90,7 +88,7 @@ export class App extends Component {
                 <Col large={8} largeOffset={2}>
                   <h1 className={styles.main_title}>AddMP3.fun</h1>
                   <div className={styles.main_subtitle}>
-                    Convert any youtube video to an MP3 file. Choose playback speed and download it in seconds.
+                    Convert any youtube video to an MP3 file.
                   </div>
                   <h3>{this.state.response}</h3>
                 </Col>
@@ -105,7 +103,6 @@ export class App extends Component {
             </div>
           </div>
         </div>
-        <div className={ styles.creditsFooter }><span>Thanks to: mern.io, reverlry</span></div>
       </div>
     );
   }

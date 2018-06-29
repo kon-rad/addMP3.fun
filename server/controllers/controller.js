@@ -1,5 +1,4 @@
 const fs = require('fs');
-// let	ffmpeg = require('fluent-ffmpeg');
 let youtubedl = require('youtube-dl');
 let path = require('path');
 const { spawn } = require('child_process');
@@ -15,7 +14,7 @@ const { spawn } = require('child_process');
  */
 export function postAudio(req, res) {
   const url = req.body.post.url.trim();
-  let filename = url.split('watch?v=')[1] + '.mp3';
+  let filename = url + '.mp3';
   const file = path.join(__dirname, '..', 'tmp');
 
   youtubedl.exec(url,
@@ -24,7 +23,7 @@ export function postAudio(req, res) {
     function exec(err, output) {
       'use strict';
       if (err) {
-        res.send('error, please try again');
+        res.send('an error occurred, please try again');
         throw err;
       }
       console.log(output.join('\n'));
@@ -52,7 +51,7 @@ export function download(req, res) {
         fs.unlink(file);
       });
     } else {
-      res.send('error, please try again');
+      res.send('an error occurred, please try again');
       res.end();
     }
   })
@@ -94,7 +93,7 @@ export function changeRate(req, res) {
       if (exists) {
         fs.unlink(file);
       } else {
-        console.log('error, could not delete ' + file);
+        console.log('an error occurred, could not delete ' + file);
         res.end();
       }
     })
