@@ -24,12 +24,14 @@ class InputBox extends Component {
     if (this.state.value.trim()) {
       let ytid = this.state.value.match(/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/);
       if (!ytid[5]) {
+
         return;
       }
+
       this.props.sendUrl(ytid[5]);
       this.setState({ value: '' });
     }
-  }
+  };
 
   render() {
     return (
