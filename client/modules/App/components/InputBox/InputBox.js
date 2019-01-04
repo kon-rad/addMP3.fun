@@ -23,7 +23,7 @@ class InputBox extends Component {
     e.preventDefault();
     if (this.state.value.trim()) {
       let ytid = this.state.value.match(/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/);
-      if (!ytid[5]) {
+      if (typeof ytid[5] === 'undefined') {
 
         return;
       }
