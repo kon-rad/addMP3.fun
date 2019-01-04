@@ -1,6 +1,6 @@
 import test from "ava";
 import { actionTest } from "redux-ava";
-import { TOGGLE_ADD_POST, toggleAddPost } from "../AppActions";
+import { TOGGLE_ADD_POST, toggleAddPost } from "../../actions";
 
 test(
   "should return the correct type for toggleAddPost",

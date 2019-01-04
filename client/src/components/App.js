@@ -7,10 +7,10 @@ import DownloadLink from "./DownloadLink/DownloadLink";
 import styles from "./App.css";
 
 // Import Actions
-import { toggleAddPost } from "./AppActions";
+import { toggleAddPost } from "../actions";
 
 // Import Api caller
-import callApi from "../../util/apiCaller";
+import callApi from "../util/apiCaller";
 
 export class App extends Component {
   constructor(props) {

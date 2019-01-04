@@ -7,23 +7,26 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --mode development --open && nodemon index.js",
     "build": "webpack --mode production",
-    "start:prod": "npm run build && NODE_ENV=production nodemon index.js"
+    "start": "npm run build && NODE_ENV=production nodemon index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "child_process": "^1.0.2",
     "express": "^4.16.4",
     "fs": "0.0.1-security",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-icons": "^3.2.2",
     "react-redux": "^6.0.0",
     "redux": "^4.0.1",
     "youtube-dl": "^1.12.2"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.2.3",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.4",

@@ -1,19 +1,10 @@
-'use strict';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./components/App";
+import { createStore, combineReducers } from "redux";
+import reducers from "./reducers";
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-
-    return (
-      <h1>Hello there</h1>
-    )
-  }
-}
-
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <App store={createStore(combineReducers(reducers))} />,
+  document.getElementById("root")
+);
