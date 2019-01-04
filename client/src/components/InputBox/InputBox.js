@@ -20,7 +20,7 @@ class InputBox extends Component {
       let ytid = this.state.value.match(
         /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/
       );
-      if (!ytid[5]) {
+      if (typeof ytid[5] === "undefined") {
         return;
       }
 
@@ -40,18 +40,14 @@ class InputBox extends Component {
               value={this.state.value}
               onChange={this.handleChange}
             />
-            <Button className={styles.submitButton} type="submit">
+            <button className={styles.submitButton} type="submit">
               addMP3
-            </Button>
+            </button>
           </form>
         </div>
       </div>
     );
   }
 }
-
-InputBox.propTypes = {
-  sendUrl: PropTypes.func.isRequired
-};
 
 export default InputBox;

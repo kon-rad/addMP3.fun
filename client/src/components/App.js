@@ -2,15 +2,9 @@ import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import InputBox from "./InputBox/InputBox";
 import DownloadLink from "./DownloadLink/DownloadLink";
-
-// Import Style
+import axios from "axios";
 import styles from "./App.css";
-
-// Import Actions
 import { toggleAddPost } from "../actions";
-
-// Import Api caller
-import callApi from "../util/apiCaller";
 
 export class App extends Component {
   constructor(props) {
@@ -33,13 +27,13 @@ export class App extends Component {
   handleSendUrl = searchQuery => {
     this.setState({ downloadLink: "loading" });
 
-    return callApi("postAudio", "post", {
-      post: {
+    return axios
+      .post("postAudio", {
         url: searchQuery
-      }
-    }).then(res => {
-      this.setState({ downloadLink: res.downloadLink });
-    });
+      })
+      .then(res => {
+        this.setState({ downloadLink: res.downloadLink });
+      });
   };
 
   handleReset = () => {
@@ -51,11 +45,9 @@ export class App extends Component {
     let playbackSpeed = e.target.value;
     this.setState({ playbackSpeed: e.target.value, downloadLink: "loading" });
 
-    return callApi(`changeRate/${audioFileId}/${playbackSpeed}`, "get").then(
-      res => {
-        this.setState({ downloadLink: res.downloadLink });
-      }
-    );
+    return axios.get(`changeRate/${audioFileId}/${playbackSpeed}`).then(res => {
+      this.setState({ downloadLink: res.downloadLink });
+    });
   };
 
   render() {
@@ -85,11 +77,6 @@ export class App extends Component {
     );
   }
 }
-
-App.propTypes = {
-  children: PropTypes.object.isRequired,
-  dispatch: PropTypes.func.isRequired
-};
 
 // Retrieve data from store as props
 function mapStateToProps(store) {

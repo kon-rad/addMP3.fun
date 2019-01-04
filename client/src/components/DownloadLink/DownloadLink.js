@@ -1,6 +1,4 @@
 import React, { Component, PropTypes } from "react";
-import FaDownload from "react-icons/lib/fa/download";
-import FaClose from "react-icons/lib/fa/close";
 
 // Import Style
 import styles from "./DownloadLink.css";
@@ -33,16 +31,14 @@ class DownloadLink extends Component {
             style={{ alignItems: "center" }}
           >
             <button onClick={() => this.props.handleReset()}>
-              <FaClose />
-              Reset
+              &#128473; Reset
             </button>
             <a
               target="_blank"
               href={hrefUrl}
               onClick={() => this.props.handleReset()}
             >
-              <FaDownload />
-              Download{" "}
+              \u21E9 Download{" "}
               <span className={styles.downloadSpeed}>
                 {this.props.playbackSpeed}x speed
               </span>
