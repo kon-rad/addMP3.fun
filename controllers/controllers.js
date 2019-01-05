@@ -13,6 +13,7 @@ const { spawn } = require("child_process");
  * https://www.youtube.com/watch?v=Lo3769VtgHM
  */
 module.exports.postAudio = (req, res) => {
+  console.log("post audio here");
   const url = req.body.url.trim();
   let filename = url + ".mp3";
   const file = path.join(__dirname, "..", "tmp");

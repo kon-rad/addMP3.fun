@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from "react";
 
+// user error messages. e.g. when an incorrect url is entered
 const USER_MESSAGES = {
   INVALID_URL: (
     <div>
