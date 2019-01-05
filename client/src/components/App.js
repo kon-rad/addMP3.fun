@@ -1,10 +1,11 @@
 import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
-import InputBox from "./InputBox/InputBox";
-import DownloadLink from "./DownloadLink/DownloadLink";
+import InputBox from "./InputBox";
+import DownloadLink from "./DownloadLink";
 import axios from "axios";
-import styles from "./App.css";
 import { toggleAddPost } from "../actions";
+
+require("./App.css");
 
 export class App extends Component {
   constructor(props) {
@@ -52,17 +53,15 @@ export class App extends Component {
 
   render() {
     return (
-      <div className={styles.appWrapper}>
+      <div className="appWrapper">
         <div className="main_container">
-          <div className={styles.customRow}>
-            <div className={styles.col}>
-              <h1 className={styles.main_title}>AddMP3.fun</h1>
-              <div className={styles.main_subtitle}>
-                Convert any youtube video to an MP3 file.
-              </div>
+          <div className="customRow">
+            <div className="col">
+              <h1 className="main_title">AddMP3.fun</h1>
+              <div className="main_subtitle">Convert youtube video to MP3</div>
               <h3>{this.state.response}</h3>
             </div>
-            <div className={styles.col}>
+            <div className="col">
               <InputBox sendUrl={this.handleSendUrl} />
               <DownloadLink
                 playbackSpeed={this.state.playbackSpeed}

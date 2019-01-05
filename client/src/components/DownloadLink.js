@@ -1,8 +1,5 @@
 import React, { Component, PropTypes } from "react";
 
-// Import Style
-import styles from "./DownloadLink.css";
-
 class DownloadLink extends Component {
   constructor(props) {
     super(props);
@@ -11,8 +8,8 @@ class DownloadLink extends Component {
   render() {
     let hrefUrl = `/api/download/${this.props.downloadLink}`;
     let loading = (
-      <div className={styles.spinnerOuter}>
-        <div className={styles.spinnerWrapper}>
+      <div className="spinnerOuter">
+        <div className="spinnerWrapper">
           <div className="loader" />
         </div>
         <div>
@@ -26,10 +23,7 @@ class DownloadLink extends Component {
         this.props.downloadLink === "loading" ? (
           loading
         ) : (
-          <div
-            className={styles.buttonsWrapper}
-            style={{ alignItems: "center" }}
-          >
+          <div className="buttonsWrapper" style={{ alignItems: "center" }}>
             <button onClick={() => this.props.handleReset()}>
               &#128473; Reset
             </button>
@@ -39,11 +33,11 @@ class DownloadLink extends Component {
               onClick={() => this.props.handleReset()}
             >
               \u21E9 Download{" "}
-              <span className={styles.downloadSpeed}>
+              <span className="downloadSpeed">
                 {this.props.playbackSpeed}x speed
               </span>
             </a>
-            <div className={styles.changesSpeedWrapper}>
+            <div className="changesSpeedWrapper">
               <select
                 name="playbackRate"
                 defaultValue={this.props.playbackSpeed}
@@ -57,7 +51,7 @@ class DownloadLink extends Component {
                 <option value="1.75">1.75x</option>
                 <option value="2">2.0x</option>
               </select>
-              <span className={styles.speedButton}>Select Speed</span>
+              <span className="speedButton">Select Speed</span>
             </div>
           </div>
         );

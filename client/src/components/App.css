@@ -1,74 +1,38 @@
+
+:root {
+  /* RGB */
+  --color1: rgba(255, 0, 253, 1);
+  --color2: rgba(0, 39, 43, 1);
+  --color3: rgba(224, 255, 79, 1);
+  --color4: rgba(255, 102, 99, 1);
+  --color5: rgba(165, 16, 128, 1);
+}
 .container {
   max-width: 980px;
   width: 100%;
   padding: 15px;
   margin: 0 auto;
 }
-
 html, body {
   position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
+  font-family: 'Lato', sans-serif;
 }
-
-
 .searchList_wrapper {
   max-width: 1024px;
   width: 100%;
   margin: 100px auto!important;
 }
-
-body {
-  font-family: Lato;
-}
-/*
-  Global CSS file
-*/
-*{
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  line-height: normal;
-}
-
-::-webkit-input-placeholder {
-  color:#aaa;
-  font-weight: 300;
-}
-::-moz-placeholder {
-  color:#aaa;
-  font-weight: 300;
-}
-:-ms-input-placeholder {
-  color:#aaa;
-  font-weight: 300;
-}
-input:-moz-placeholder {
-  color:#aaa;
-  font-weight: 300;
-}
-
-/*body {*/
-  /*!*background: #FFF;*!*/
-  /*font-family: 'Lato', sans-serif;*/
-  /*font-size: 16px;*/
-/*}*/
-
 .rev-Row {
   margin: 0 auto!important;
 }
-
 html, body {
   background-image: -webkit-linear-gradient(45deg, #00ffa1, aqua) !important;
   background-image: linear-gradient(45deg, #00ffa1, aqua) !important;
   font-family: 'Roboto', sans-serif !important;
-  /*background: #0F2027 !important; !* fallback for old browsers *!*/
-  /*background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027) !important;  !* Chrome 10-25, Safari 5.1-6 *!*/
-  /*background: linear-gradient(to right, #2C5364, #203A43, #0F2027) !important; !* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ *!*/
 
 }
 .moonlitBackground {
@@ -87,7 +51,7 @@ html, body {
   padding: 100px 0 40px;
   font-size: 68px;
   color: #0c0b0b;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   margin: 0;
 
   text-align: center;
@@ -115,4 +79,57 @@ font-family: 'Comfortaa', cursive;
 
 .appWrapper {
   height: 900px;
+}
+.main_container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.changesSpeedWrapper {
+  display:flex;
+}
+.speedButton {
+  text-align: center;
+  font-size: 14px;
+  padding-top: 6px;
+}
+.downloadSpeed {
+  font-size: 13px;
+}
+
+.spinnerWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinnerOuter {
+  text-align: center;
+}
+
+.spinnerTextWrapper {
+  text-align: center;
+}
+
+@media only screen and (max-width: 900px) {
+  .buttonsWrapper {
+    display: flex!important;
+    flex-direction: column!important;
+  }
+}
+.submitButton {
+  font-size: 12px;
+  padding: 11px 49px;
+  border: solid 1px var(--color2);
+  background: var(--color3);
+  color: var(--color2);
+}
+input[type="text"] {
+  padding: 12px 8px;
+  border: solid 1px var(--color2);
+  width: 420px;
+  color: var(--color2);
+}
+.error_message {
+  color: #da0000;
+  margin: 10px auto;
 }

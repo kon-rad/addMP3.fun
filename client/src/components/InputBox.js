@@ -1,18 +1,23 @@
 import React, { Component, PropTypes } from "react";
 
-import styles from "./InputBox.css";
+const USER_MESSAGES = {
+  INVALID_URL: (
+    <div>
+      <i className="fa fa-exclamation-circle" aria-hidden="true" /> Invalid
+      youtube URL, please try again
+    </div>
+  )
+};
 
 class InputBox extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: "" };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = { value: "", error: false, errorType: null };
   }
 
-  handleChange(event) {
+  handleChange = event => {
     this.setState({ value: event.target.value });
-  }
+  };
 
   handleSubmit = e => {
     e.preventDefault();
@@ -20,7 +25,9 @@ class InputBox extends Component {
       let ytid = this.state.value.match(
         /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/
       );
-      if (typeof ytid[5] === "undefined") {
+      if (!ytid || !(ytid.length >= 5)) {
+        this.setState({ error: true, errorType: "INVALID_URL" });
+
         return;
       }
 
@@ -29,10 +36,27 @@ class InputBox extends Component {
     }
   };
 
+  clearError = () => {
+    this.setState({ error: false, errorType: null });
+  };
+
+  renderUserMessage = () => {
+    if (this.state.error) {
+      setTimeout(this.clearError, 7000);
+      return (
+        <div className="error_message">
+          {USER_MESSAGES[this.state.errorType]}
+        </div>
+      );
+    }
+
+    return null;
+  };
+
   render() {
     return (
       <div className="inputBox_container">
-        <div className={styles.col}>
+        <div className="col">
           <form onSubmit={this.handleSubmit}>
             <input
               placeholder="Youtube URL"
@@ -40,9 +64,10 @@ class InputBox extends Component {
               value={this.state.value}
               onChange={this.handleChange}
             />
-            <button className={styles.submitButton} type="submit">
+            <button className="submitButton" type="submit">
               addMP3
             </button>
+            {this.renderUserMessage()}
           </form>
         </div>
       </div>
