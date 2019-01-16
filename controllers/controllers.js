@@ -8,9 +8,6 @@ const { spawn } = require("child_process");
  * @param req
  * @param res
  * @returns void
- *
- * test url:
- * https://www.youtube.com/watch?v=Lo3769VtgHM
  */
 module.exports.postAudio = (req, res) => {
   console.log("post audio here");
