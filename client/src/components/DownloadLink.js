@@ -21,21 +21,23 @@ class DownloadLink extends Component {
 
     const changePlaybackSpeed = (
       <div className="buttonsWrapper" style={{ alignItems: "center" }}>
-        <button onClick={() => this.props.handleReset()}>
-          &#128473; Reset
+        <button className="resetButton" onClick={() => this.props.handleReset()}>
+        <i className="fa fa-times-circle"></i> Reset
         </button>
         <a
+          className="downloadButton"
           target="_blank"
           href={hrefUrl}
           onClick={() => this.props.handleReset()}
         >
-          \u21E9 Download{" "}
+          <i className="fa fa-download"></i> Download{" "}
           <span className="downloadSpeed">
             {this.props.playbackSpeed}x speed
           </span>
         </a>
         <div className="changesSpeedWrapper">
           <select
+            className="playbackButton"
             name="playbackRate"
             defaultValue={this.props.playbackSpeed}
             onChange={e => this.props.handleRateChange(e)}
@@ -58,7 +60,7 @@ class DownloadLink extends Component {
       link =
         this.props.downloadLink === "loading" ? loading : changePlaybackSpeed;
     }
-    
+
     return (
       <div>
         <div>{link}</div>

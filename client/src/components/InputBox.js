@@ -22,20 +22,22 @@ class InputBox extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    if (this.state.value.trim()) {
-      let ytid = this.state.value.match(
-        /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/
-      );
-      if (!ytid || !(ytid.length >= 5)) {
-        this.setState({ error: true, errorType: "INVALID_URL" });
-
-        return;
-      }
-
-      this.props.sendUrl(ytid[5]);
-      this.setState({ value: "" });
-      console.log('input box here handleSubmit', this.state);
+    if (!this.state.value.trim()) {
+      return;
     }
+
+    let ytid = this.state.value.match(
+      /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/
+    );
+    if (!ytid || !(ytid.length >= 5)) {
+      this.setState({ error: true, errorType: "INVALID_URL" });
+
+      return;
+    }
+
+    this.props.sendUrl(ytid[5]);
+    this.setState({ value: "" });
+    console.log('input box here handleSubmit', this.state);
   };
 
   clearError = () => {
@@ -60,15 +62,17 @@ class InputBox extends Component {
       <div className="inputBox_container">
         <div className="col">
           <form onSubmit={this.handleSubmit}>
-            <input
-              placeholder="Youtube URL"
-              type="text"
-              value={this.state.value}
-              onChange={this.handleChange}
-            />
-            <button className="submitButton" type="submit">
-              addMP3
-            </button>
+            <div className="inputWrapper">
+              <input
+                placeholder="Youtube URL"
+                type="text"
+                value={this.state.value}
+                onChange={this.handleChange}
+              />
+              <button className="submitButton" type="submit">
+                addMP3
+              </button>
+            </div>
             {this.renderUserMessage()}
           </form>
         </div>
