@@ -7,6 +7,7 @@ class DownloadLink extends Component {
 
   render() {
     const hrefUrl = `/api/download/${this.props.downloadLink}`;
+
     const loading = (
       <div className="spinnerOuter">
         <div className="spinnerWrapper">
@@ -17,6 +18,7 @@ class DownloadLink extends Component {
         </div>
       </div>
     );
+
     const changePlaybackSpeed = (
       <div className="buttonsWrapper" style={{ alignItems: "center" }}>
         <button onClick={() => this.props.handleReset()}>
@@ -56,6 +58,7 @@ class DownloadLink extends Component {
       link =
         this.props.downloadLink === "loading" ? loading : changePlaybackSpeed;
     }
+    
     return (
       <div>
         <div>{link}</div>

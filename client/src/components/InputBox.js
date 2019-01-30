@@ -34,6 +34,7 @@ class InputBox extends Component {
 
       this.props.sendUrl(ytid[5]);
       this.setState({ value: "" });
+      console.log('input box here handleSubmit', this.state);
     }
   };
 

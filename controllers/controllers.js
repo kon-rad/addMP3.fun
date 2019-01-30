@@ -9,7 +9,7 @@ const { spawn } = require("child_process");
  * @param res
  * @returns void
  */
-module.exports.postAudio = (req, res) => {
+module.exports.audio = (req, res) => {
   console.log("post audio here");
   const url = req.body.url.trim();
   let filename = url + ".mp3";
@@ -46,6 +46,7 @@ module.exports.postAudio = (req, res) => {
  * @returns void
  */
 module.exports.download = (req, res) => {
+  console.log('heres get download', req.params.id);
   const fileId = req.params.id.trim();
   const file = path.join(__dirname, "..", "tmp", fileId);
 

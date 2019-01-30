@@ -1,13 +1,13 @@
 const path = require("path");
-
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const WebpackShellPlugin = require("webpack-shell-plugin");
 
 const htmlPlugin = new HtmlWebPackPlugin({
   template: "./client/public/index.html",
   filename: "./index.html"
 });
 
-module.exports = {
+const config = {
   entry: "./client/src/index.js",
   output: {
     path: path.resolve(__dirname, "client/build"),
@@ -40,3 +40,13 @@ module.exports = {
   },
   plugins: [htmlPlugin]
 };
+
+if (process.env.NODE_ENV !== "production") {
+  config.plugins.push(
+    new WebpackShellPlugin({
+      onBuildEnd: ["nodemon index.js -- watch build"]
+    })
+  );
+}
+
+module.exports = config;

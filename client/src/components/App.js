@@ -28,12 +28,14 @@ export class App extends Component {
   handleSendUrl = searchQuery => {
     this.setState({ downloadLink: "loading" });
 
-    return axios
-      .post("postAudio", {
+    console.log('sent request, ', this.state);
+    axios
+      .post("api/audio", {
         url: searchQuery
       })
       .then(res => {
-        this.setState({ downloadLink: res.downloadLink });
+        this.setState({ downloadLink: res.data.downloadLink });
+        console.log('hi, ', res, this.state);
       });
   };
 
@@ -46,7 +48,7 @@ export class App extends Component {
     let playbackSpeed = e.target.value;
     this.setState({ playbackSpeed: e.target.value, downloadLink: "loading" });
 
-    return axios.get(`changeRate/${audioFileId}/${playbackSpeed}`).then(res => {
+    return axios.get(`api/changeRate/${audioFileId}/${playbackSpeed}`).then(res => {
       this.setState({ downloadLink: res.downloadLink });
     });
   };

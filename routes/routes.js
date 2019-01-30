@@ -2,11 +2,11 @@ const Controllers = require("../controllers/controllers");
 
 module.exports = app => {
   // Post audio
-  app.post("/postAudio", Controllers.postAudio);
+  app.post("/api/audio", Controllers.audio);
 
   // download audio
-  app.get("/download/:id", Controllers.download);
+  app.get("/api/download/:id", Controllers.download);
 
   // changeRate audio
-  app.get("/changeRate/:fileId/:playbackRate", Controllers.changeRate);
+  app.get("/api/changeRate/:fileId/:playbackRate", Controllers.changeRate);
 };
