@@ -16,8 +16,6 @@ app.use(express.static("client/build"));
 const path = require("path");
 console.log("inside prod");
 app.get("*", (req, res) => {
-  console.log("inside prod get *");
-
   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 });
 // }
