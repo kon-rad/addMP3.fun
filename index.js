@@ -14,7 +14,6 @@ const PORT = 8080;
 app.use(express.static("client/build"));
 // express will serve static files if it doesn't recognize the route
 const path = require("path");
-console.log("inside prod");
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 });
