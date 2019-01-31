@@ -10,7 +10,6 @@ const { spawn } = require("child_process");
  * @returns void
  */
 module.exports.audio = (req, res) => {
-  console.log("post audio here");
   const url = req.body.url.trim();
   let filename = url + ".mp3";
   const file = path.join(__dirname, "..", "tmp");
@@ -29,11 +28,11 @@ module.exports.audio = (req, res) => {
     function exec(err, output) {
       "use strict";
       if (err) {
-        res.send("an error occurred, please try again");
-        throw err;
+        res.send({ error: `ERROR: ${url} is not a valid URL` });
+        res.end();
+        return;
       }
       console.log(output.join("\n"));
-
       res.send({ downloadLink: `${filename}` });
     }
   );
@@ -46,7 +45,6 @@ module.exports.audio = (req, res) => {
  * @returns void
  */
 module.exports.download = (req, res) => {
-  console.log('heres get download', req.params.id);
   const fileId = req.params.id.trim();
   const file = path.join(__dirname, "..", "tmp", fileId);
 
@@ -55,8 +53,6 @@ module.exports.download = (req, res) => {
       res.send("an error occurred, please try again");
       res.end();
     } else {
-      console.log('found');
-
       res.setHeader("Content-disposition", "attachment; filename=" + fileId);
       res.setHeader("Content-Type", "application/audio/mpeg3");
       let rstream = fs.createReadStream(file);

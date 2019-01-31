@@ -1,19 +1,18 @@
-import React, { Component, PropTypes } from "react";
-import { connect } from "react-redux";
+import React, { Component } from "react";
 import InputBox from "./InputBox";
 import DownloadLink from "./DownloadLink";
 import axios from "axios";
-import { toggleAddPost } from "../actions";
 
 require("./App.css");
 
-export class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isMounted: false,
       downloadLink: "",
-      playbackSpeed: "1"
+      playbackSpeed: "1",
+      error: ''
     };
   }
 
@@ -21,21 +20,25 @@ export class App extends Component {
     this.setState({ isMounted: true }); // eslint-disable-line
   }
 
-  toggleAddPostSection = () => {
-    this.props.dispatch(toggleAddPost());
-  };
+  renderError = () => {
+    if (this.state.error) {
+      return (<div>{this.state.error}</div>);
+    }
+  }
 
   handleSendUrl = searchQuery => {
     this.setState({ downloadLink: "loading" });
 
-    console.log('sent request, ', this.state);
     axios
       .post("api/audio", {
         url: searchQuery
       })
       .then(res => {
+        if (res.data.error) {
+          this.setState({ error: res.data.error, downloadLink: '' });
+          return;
+        }
         this.setState({ downloadLink: res.data.downloadLink });
-        console.log('hi, ', res, this.state);
       });
   };
 
@@ -70,6 +73,7 @@ export class App extends Component {
             </div>
             <div className="col">
               <InputBox sendUrl={this.handleSendUrl} />
+              {this.renderError()}
               <DownloadLink
                 playbackSpeed={this.state.playbackSpeed}
                 handleRateChange={this.handleRateChange}
@@ -84,9 +88,4 @@ export class App extends Component {
   }
 }
 
-// Retrieve data from store as props
-function mapStateToProps(store) {
-  return {};
-}
-
-export default connect(mapStateToProps)(App);
+export default App;
