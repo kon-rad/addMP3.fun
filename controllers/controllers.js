@@ -50,17 +50,23 @@ module.exports.download = (req, res) => {
   const fileId = req.params.id.trim();
   const file = path.join(__dirname, "..", "tmp", fileId);
 
-  fs.exists(file, exists => {
-    if (exists) {
+  fs.access(file, fs.constants.F_OK, (err) => {
+    if (err) {
+      res.send("an error occurred, please try again");
+      res.end();
+    } else {
+      console.log('found');
+
       res.setHeader("Content-disposition", "attachment; filename=" + fileId);
       res.setHeader("Content-Type", "application/audio/mpeg3");
       let rstream = fs.createReadStream(file);
       rstream.pipe(res).on("finish", function() {
-        fs.unlink(file);
+        fs.unlink(file, (err) => {
+          if (err) {
+            console.log('error, unable to delete file ', file);
+          }
+        });
       });
-    } else {
-      res.send("an error occurred, please try again");
-      res.end();
     }
   });
 };
@@ -104,12 +110,12 @@ module.exports.changeRate = (req, res) => {
     console.log("...closing time! bye");
     res.send({ downloadLink: outputFileName });
 
-    fs.exists((file, exists) => {
-      if (exists) {
-        fs.unlink(file);
-      } else {
+    fs.access(file, fs.constants.F_OK, (err) => {
+      if (err) {
         console.log("an error occurred, could not delete " + file);
         res.end();
+      } else {
+        fs.unlink(file);
       }
     });
   });
