@@ -104,7 +104,7 @@ module.exports.changeRate = (req, res) => {
     console.log("...closing time! bye");
     res.send({ downloadLink: outputFileName });
 
-    fs.exists(file, exists => {
+    fs.exists((file, exists) => {
       if (exists) {
         fs.unlink(file);
       } else {

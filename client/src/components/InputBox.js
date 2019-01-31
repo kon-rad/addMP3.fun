@@ -4,8 +4,8 @@ import React, { Component, PropTypes } from "react";
 const USER_MESSAGES = {
   INVALID_URL: (
     <div>
-      <i className="fa fa-exclamation-circle" aria-hidden="true" /> Invalid
-      youtube URL, please try again
+      <i className="fa fa-exclamation-circle" aria-hidden="true" />
+      &nbsp; Invalid youtube URL, please try again
     </div>
   )
 };
@@ -70,7 +70,7 @@ class InputBox extends Component {
                 onChange={this.handleChange}
               />
               <button className="submitButton" type="submit">
-                addMP3
+                GO
               </button>
             </div>
             {this.renderUserMessage()}

@@ -1,28 +1,17 @@
 import React, { Component, PropTypes } from "react";
+import Loading from './Loading';
 
 class DownloadLink extends Component {
   constructor(props) {
     super(props);
   }
 
-  render() {
+  changePlaybackSpeed = () => {
     const hrefUrl = `/api/download/${this.props.downloadLink}`;
-
-    const loading = (
-      <div className="spinnerOuter">
-        <div className="spinnerWrapper">
-          <div className="loader" />
-        </div>
-        <div>
-          <span>Converting file ...</span>
-        </div>
-      </div>
-    );
-
-    const changePlaybackSpeed = (
+    return (
       <div className="buttonsWrapper" style={{ alignItems: "center" }}>
         <button className="resetButton" onClick={() => this.props.handleReset()}>
-        <i className="fa fa-times-circle"></i> Reset
+          <i className="fa fa-times-circle"></i> Reset
         </button>
         <a
           className="downloadButton"
@@ -30,7 +19,7 @@ class DownloadLink extends Component {
           href={hrefUrl}
           onClick={() => this.props.handleReset()}
         >
-          <i className="fa fa-download"></i> Download{" "}
+          <i className="fa fa-download"></i> Download
           <span className="downloadSpeed">
             {this.props.playbackSpeed}x speed
           </span>
@@ -54,16 +43,23 @@ class DownloadLink extends Component {
         </div>
       </div>
     );
+  } 
 
-    let link = "";
-    if (this.props.downloadLink) {
-      link =
-        this.props.downloadLink === "loading" ? loading : changePlaybackSpeed;
+  renderLink = () => {
+    if (!this.props.downloadLink) {
+      return;
+    }
+    if (this.props.downloadLink === "loading") {
+      return <Loading/>;
     }
 
+    return this.changePlaybackSpeed();
+  }
+
+  render() {
     return (
       <div>
-        <div>{link}</div>
+        {this.renderLink()}
       </div>
     );
   }

@@ -12,7 +12,7 @@ export class App extends Component {
     super(props);
     this.state = {
       isMounted: false,
-      downloadLink: "l9RWTMNnvi4",
+      downloadLink: "",
       playbackSpeed: "1"
     };
   }
@@ -46,11 +46,16 @@ export class App extends Component {
   handleRateChange = e => {
     let audioFileId = this.state.downloadLink;
     let playbackSpeed = e.target.value;
-    this.setState({ playbackSpeed: e.target.value, downloadLink: "loading" });
+    this.setState({
+        playbackSpeed: e.target.value,
+        downloadLink: "loading"
+      });
 
-    return axios.get(`api/changeRate/${audioFileId}/${playbackSpeed}`).then(res => {
-      this.setState({ downloadLink: res.downloadLink });
-    });
+    axios
+      .get(`api/changeRate/${audioFileId}/${playbackSpeed}`)
+      .then(res => {
+        this.setState({ downloadLink: res.data.downloadLink });
+      });
   };
 
   render() {
