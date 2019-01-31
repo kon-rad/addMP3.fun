@@ -44,7 +44,7 @@ const config = {
 if (process.env.NODE_ENV !== "production") {
   config.plugins.push(
     new WebpackShellPlugin({
-      onBuildEnd: ["nodemon index.js -- watch build"]
+      onBuildEnd: ["node index.js -- watch build"]
     })
   );
 }
