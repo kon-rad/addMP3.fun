@@ -111,7 +111,11 @@ module.exports.changeRate = (req, res) => {
         console.log("an error occurred, could not delete " + file);
         res.end();
       } else {
-        fs.unlink(file);
+        fs.unlink(file, (err) => {
+          if (err) {
+            console.log('error, unable to delete file ', file);
+          }
+        });
       }
     });
   });
