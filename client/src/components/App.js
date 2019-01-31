@@ -3,8 +3,6 @@ import InputBox from "./InputBox";
 import DownloadLink from "./DownloadLink";
 import axios from "axios";
 
-require("./App.css");
-
 class App extends Component {
   constructor(props) {
     super(props);
