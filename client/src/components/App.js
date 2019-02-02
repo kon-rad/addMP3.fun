@@ -32,6 +32,8 @@ class App extends Component {
         url: searchQuery
       })
       .then(res => {
+        console.log('heres res', res);
+
         if (res.data.error) {
           this.setState({ error: res.data.error, downloadLink: '' });
           return;
@@ -66,7 +68,7 @@ class App extends Component {
           <div className="customRow">
             <div className="col">
               <h1 className="main_title">AddMP3.fun</h1>
-              <div className="main_subtitle">Convert youtube video to MP3</div>
+              <div className="main_subtitle">Convert youtube video to MP3. (Only videos with duration under 30 minutes)</div>
               <h3>{this.state.response}</h3>
             </div>
             <div className="col">
