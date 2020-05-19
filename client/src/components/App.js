@@ -27,6 +27,7 @@ class App extends Component {
   handleSendUrl = searchQuery => {
     this.setState({ downloadLink: "loading" });
 
+    console.log('searchQuery', searchQuery);
     axios
       .post("api/audio", {
         url: searchQuery

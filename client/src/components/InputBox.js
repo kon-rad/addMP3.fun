@@ -26,6 +26,8 @@ class InputBox extends Component {
       return;
     }
 
+    // todo: somehow this is throwing an invalid url error on the back end
+    // perhaps something changed with the library or the api
     let ytid = this.state.value.match(
       /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/
     );

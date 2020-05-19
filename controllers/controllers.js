@@ -10,6 +10,7 @@ const { spawn } = require("child_process");
  * @returns void
  */
 module.exports.audio = (req, res) => {
+  console.log(req, req.body);
   const url = req.body.url.trim();
   let filename = url + ".mp3";
   const file = path.join(__dirname, "..", "tmp");
