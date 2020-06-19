@@ -7,7 +7,7 @@ app.use(bodyParser.json());
 
 require("./routes/routes")(app);
 
-const PORT = 8080;
+const PORT = 8084;
 
 // if (process.env.NODE_ENV === "production") {
 // express will serve production assets
