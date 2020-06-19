@@ -10,7 +10,6 @@ const { spawn } = require("child_process");
  * @returns void
  */
 module.exports.audio = (req, res) => {
-  console.log(req, req.body);
   const url = req.body.url.trim();
   let filename = url + ".mp3";
   const file = path.join(__dirname, "..", "tmp");
@@ -29,6 +28,7 @@ module.exports.audio = (req, res) => {
     function exec(err, output) {
       "use strict";
       if (err) {
+        console.log('error: ', err);
         res.send({ error: `ERROR: ${url} is not a valid URL` });
         res.end();
         return;

@@ -27,13 +27,11 @@ class App extends Component {
   handleSendUrl = searchQuery => {
     this.setState({ downloadLink: "loading" });
 
-    console.log('searchQuery', searchQuery);
     axios
       .post("api/audio", {
         url: searchQuery
       })
       .then(res => {
-        console.log('heres res', res);
 
         if (res.data.error) {
           this.setState({ error: res.data.error, downloadLink: '' });
