@@ -4,3 +4,4 @@ node_modules
 notes.txt
 client/build
 tmp
+*.icloud
