@@ -66,7 +66,7 @@ class App extends Component {
         <div className="main_container">
           <div className="customRow">
             <div className="col">
-              <h1 className="main_title">AddMP3.fun</h1>
+              <h1 className="main_title">YouTube to MP3</h1>
               <div className="main_subtitle">Convert youtube video to MP3. (Currently will only convert videos with duration under 30 minutes)</div>
               <h3>{this.state.response}</h3>
             </div>
