@@ -39,7 +39,7 @@ class DownloadLink extends Component {
             <option value="1.75">1.75x</option>
             <option value="2">2.0x</option>
           </select>
-          <span className="speedButton">Select Speed</span>
+          <span className="speedButton">Select Playback Speed</span>
         </div>
       </div>
     );

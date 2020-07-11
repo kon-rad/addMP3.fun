@@ -13,6 +13,10 @@ module.exports.audio = (req, res) => {
   const url = req.body.url.trim();
   let filename = url + ".mp3";
   const file = path.join(__dirname, "..", "tmp");
+  console.log(url, filename);
+  // make api call to 
+  // https://www.googleapis.com/youtube/v3/videos?id=YOUR_VIDEO_ID&key=YOUR_API_KEY&part=snippet,contentDetails,statistics,status
+  // get api key
 
   youtubedl.exec(
     url,
