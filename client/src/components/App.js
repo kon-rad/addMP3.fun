@@ -7,15 +7,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isMounted: false,
       downloadLink: "",
       playbackSpeed: "1",
       error: ''
     };
-  }
-
-  componentDidMount() {
-    this.setState({ isMounted: true }); // eslint-disable-line
   }
 
   renderError = () => {

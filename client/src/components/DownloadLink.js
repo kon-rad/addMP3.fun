@@ -7,29 +7,30 @@ class DownloadLink extends Component {
   }
 
   changePlaybackSpeed = () => {
-    const hrefUrl = `/api/download/${this.props.downloadLink}`;
+    const { downloadLink, handleReset, playbackSpeed, handleRateChange } = this.props;
+    const hrefUrl = `/api/download/${downloadLink}`;
     return (
       <div className="buttonsWrapper" style={{ alignItems: "center" }}>
-        <button className="resetButton" onClick={() => this.props.handleReset()}>
+        <button className="resetButton" onClick={() => handleReset()}>
           <i className="fa fa-times-circle"></i> Reset
         </button>
         <a
           className="downloadButton"
           target="_blank"
           href={hrefUrl}
-          onClick={() => this.props.handleReset()}
+          onClick={() => handleReset()}
         >
           <i className="fa fa-download"></i> Download
           <span className="downloadSpeed">
-            {this.props.playbackSpeed}x speed
+            {playbackSpeed}x speed
           </span>
         </a>
         <div className="changesSpeedWrapper">
           <select
             className="playbackButton"
             name="playbackRate"
-            defaultValue={this.props.playbackSpeed}
-            onChange={e => this.props.handleRateChange(e)}
+            defaultValue={playbackSpeed}
+            onChange={e => handleRateChange(e)}
           >
             <option value="0.5">0.5x</option>
             <option value="0.75">0.75x</option>
@@ -46,10 +47,11 @@ class DownloadLink extends Component {
   } 
 
   renderLink = () => {
-    if (!this.props.downloadLink) {
+    const { downloadLink } = this.props;
+    if (!downloadLink) {
       return;
     }
-    if (this.props.downloadLink === "loading") {
+    if (downloadLink === "loading") {
       return <Loading/>;
     }
 
