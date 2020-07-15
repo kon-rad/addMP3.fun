@@ -17,6 +17,7 @@ class App extends Component {
     if (this.state.error) {
       return (<div>{this.state.error}</div>);
     }
+    return null;
   }
 
   handleSendUrl = searchQuery => {

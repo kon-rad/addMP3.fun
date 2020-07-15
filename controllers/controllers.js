@@ -10,16 +10,28 @@ const { spawn } = require("child_process");
  * @returns void
  */
 module.exports.audio = (req, res) => {
-  const url = req.body.url.trim();
-  let filename = url + ".mp3";
-  const file = path.join(__dirname, "..", "tmp");
-  console.log(url, filename);
-  // make api call to 
-  // https://www.googleapis.com/youtube/v3/videos?id=YOUR_VIDEO_ID&key=YOUR_API_KEY&part=snippet,contentDetails,statistics,status
-  // get api key
+  const ytCode = req.body.url.trim();
 
+  const options = [];
+  const url = 'http://www.youtube.com/watch?v=' + ytCode;
+
+  youtubedl.getInfo(url, options, (err, info) => {
+    if (err) {
+      console.log('error: ', err);
+      res.send({ error: `ERROR: ${url} is not a valid URL` });
+      res.end();
+      return;
+    }
+    const slug = info.title.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+    let filename = slug + ".mp3";
+    const file = path.join(__dirname, "..", "tmp");
+    getAudio(file, filename, res, ytCode);
+  })
+};
+
+const getAudio = (file, filename, res, ytCode) => {
   youtubedl.exec(
-    url,
+    ytCode,
     [
       "-x",
       "--audio-format",
@@ -33,15 +45,26 @@ module.exports.audio = (req, res) => {
       "use strict";
       if (err) {
         console.log('error: ', err);
-        res.send({ error: `ERROR: ${url} is not a valid URL` });
+        res.send({ error: `ERROR: ${ytCode} is not a valid URL` });
         res.end();
         return;
       }
-      console.log(output.join("\n"));
-      res.send({ downloadLink: `${filename}` });
+      const tmpFilepath = path.join(__dirname, "..", "tmp", `${ytCode}.mp3`);
+      const newNameFilepath = path.join(__dirname, "..", "tmp", filename);
+      // rename file from yt code to video title
+      fs.rename(tmpFilepath, newNameFilepath, err => {
+        if (err) {
+          console.log('error: ', err);
+          res.send({ error: `ERROR. Please try again later.` });
+          res.end();
+          return;
+        }
+        // send back filename to create download link
+        res.send({ downloadLink: `${filename}` });
+      }) 
     }
   );
-};
+}
 
 /**
  * download sends download of mp3 file
